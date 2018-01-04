@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <title>Pinus介绍 - 让做游戏变得简单</title>
+  <meta charset="utf-8">
+  <meta name="description" content="index.description">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+<link rel="stylesheet" href="/css/index.css">
+
+</head>
+<body>
+  <div class="nav" >
+  <header>
+    <a href="/zh-cn" class="nav-logo leftpadding" alt="Pinus"><img src="/images/nav-logo.png" > Pinus</a>
+    <ul class="nav-item">
+      <li><a href="/zh-cn/introduce.html" alt="文档指南">文档指南</a></li><li><a href="/zh-cn/api.html" alt="API 接口">API 接口</a></li><li><a href="https://github.com/node-pinus/pinus/releases" alt="发布日志">发布日志</a></li>
+      <!--
+      <li class="translations">
+        <a class="nav-link">header.translations</a>
+        <span class="arrow"></span>
+        <ul class="dropdown-content">
+          <li><a href="/">中文</a></li>
+          <li><a href="/">English</a></li>
+        </ul>
+      </li>
+      -->
+      <li><iframe src="https://ghbtns.com/github-btn.html?user=node-pinus&repo=pinus&type=star&count=true" frameborder="0" scrolling="0" width="150px" height="20px"></iframe></li>
+    </ul>
+    <a id="mobileTrigger" href="#" class="mobile-trigger">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </a>
+  </header>
+</div>
+
+  <div id="container" class="container">
+    <div class="page-main">
+  <article class="markdown-body">
+    <h1>Pinus介绍</h1>
+    <p>Pinus是基于node.js的高性能,分布式游戏服务器框架。它包括基础的开发框架和相关的扩展组件（库和工具包），可以帮助你省去游戏开发枯燥中的重复劳动和底层逻辑的开发。
+Pinus不但适用于游戏服务器开发， 也可用于开发高实时web应用，它的分布式架构可以使Pinus比普通的实时web框架扩展性更好。</p>
+<p>下图是Pinus框架的组成：
+<img src="http://pomelo.netease.com/resource/documentImage/pomeloFramework.png" alt="Pinus框架"></p>
+<p>Pinus包括三部分:</p>
+<ul>
+<li>框架, Pinus的核心, 与以往单进程的游戏框架不同, 它是高性能、分布式的游戏服务器框架，并且使用很简单</li>
+<li>库, 包括了开发游戏的常用工具库， 如人工智能(ai), 寻路， aoi等</li>
+<li>工具包, 包括管理控制台, 命令行工具, 压力测试工具等</li>
+</ul>
+<h2 id="pinus特性"><a class="markdown-anchor" href="#pinus特性">#</a> Pinus特性</h2>
+<p>###高可伸缩、性能</p>
+<ul>
+<li>分布式（多进程）架构</li>
+<li>服务器扩展灵活、方便</li>
+<li>充分的压力测试和优化</li>
+</ul>
+<p>###易用</p>
+<ul>
+<li>极简的API，请求、响应、广播</li>
+<li>几乎零配置，Convention over configuration</li>
+<li>基于node.js，轻量，开发快速</li>
+</ul>
+<p>###强大</p>
+<ul>
+<li>库和工具包完整、强大</li>
+<li>参考和文档齐全，并有完整的MMO demo</li>
+</ul>
+<h2 id="为什么使用pinus"><a class="markdown-anchor" href="#为什么使用pinus">#</a> 为什么使用Pinus？</h2>
+<p>高并发、高实时的游戏服务器的开发是很复杂的工作。跟web应用一样， 一个好的开源容器或开发框架可以大大减少游戏开发的复杂性，让开发变得更加容易。<br>
+遗憾的是目前在游戏服务器开发领域一直没有太好的开源解决方案。
+Pinus将填补这个空白， 打造一款完全开源的高性能（并发）游戏服务器框架。 Pinus的优势有以下几点：</p>
+<ul>
+<li>架构的可伸缩性好。 采用多进程单线程的运行架构，扩展服务器非常方便， node.js的网络io优势提供了高可伸缩性。</li>
+<li>使用非常容易， 开发模型与web应用的开发类似，基于convention over configuration的理念， 几乎零配置， api的设计也很精简， 很容易上手。</li>
+<li>框架的松耦合和可扩展性好， 遵循node.js微模块的原则， framework本身只有很少的代码，所有component、库、工具都可以用npm module的形式扩展进来。任何第三方都可以根据自己的需要开发自定义module。</li>
+<li>提供完整的开源MMO游戏demo参考(基于HTML 5)。 一个超过1万行代码的游戏demo，使开发者可以随时借鉴demo的设计与开发思路。</li>
+</ul>
+<h2 id="如何使用pinus开发"><a class="markdown-anchor" href="#如何使用pinus开发">#</a> 如何使用Pinus开发？</h2>
+<p>通过以下参考资料将使我们很快地熟悉Pinus的全貌与开发过程：</p>
+<ul>
+<li><a href="frameworkIntro.html">Pinus架构概览</a></li>
+<li><a href="quickstart.html">快速使用指南</a></li>
+</ul>
+
+  </article>
+  <aside id="mobileAside" class="toc">
+  <div class="mobile-menu">
+    <ul><li><a href="/zh-cn/introduce.html" alt="文档指南">文档指南</a></li><li><a href="/zh-cn/api.html" alt="API 接口">API 接口</a></li><li><a href="https://github.com/node-pinus/pinus/releases" alt="发布日志">发布日志</a></li></ul>
+  </div>
+  <dl><dt><a href="/zh-cn/introduce.html">Pinus 是什么？</a></dt></ul></dd><dt><a href="/zh-cn/frameworkIntro.html">Pinus架构概览</a></dt></ul></dd><dt><a href="/zh-cn/quickstart.html">快速入门</a></dt></ul></dd><dt>API 接口</dt><dd><ul><li><a href="/zh-cn/../api-reference/pinus/globals.html">pinus</a></li><li><a href="/zh-cn/../api-reference/pinus-admin/globals.html">pinus-admin</a></li><li><a href="/zh-cn/../api-reference/pinus-cli/globals.html">pinus-cli</a></li><li><a href="/zh-cn/../api-reference/pinus-loader/globals.html">pinus-loader</a></li><li><a href="/zh-cn/../api-reference/pinus-logger/globals.html">pinus-logger</a></li><li><a href="/zh-cn/../api-reference/pinus-monitor/globals.html">pinus-monitor</a></li><li><a href="/zh-cn/../api-reference/pinus-protobuf/globals.html">pinus-protobuf</a></li><li><a href="/zh-cn/../api-reference/pinus-protocol/globals.html">pinus-protocol</a></li><li><a href="/zh-cn/../api-reference/pinus-rpc/globals.html">pinus-rpc</a></li><li><a href="/zh-cn/../api-reference/pinus-scheduler/globals.html">pinus-scheduler</a></li></ul></dd></dl>
+</aside>
+<script>
+var mobileTrigger = document.getElementById('mobileTrigger');
+var mobileAside = document.getElementById('mobileAside');
+mobileTrigger.onclick = function(e) {
+  e.preventDefault();
+  if (mobileAside.className.indexOf('mobile-show') === -1) {
+    mobileAside.className += ' mobile-show';
+  } else {
+    mobileAside.className = 'toc';
+  }
+};
+</script>
+
+</div>
+
+  </div>
+</body>
+<div class="cnzz">
+<script src="https://s19.cnzz.com/z_stat.php?id=1271324644&web_id=1271324644" language="JavaScript"></script>
+</div>
+
+</html>

@@ -1,0 +1,1299 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>pinus</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">pinus</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> pinus</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<p><a href="https://travis-ci.org/node-pinus/pinus"><img src="https://travis-ci.org/node-pinus/pinus.svg?branch=master" alt="Build Status"></a></p>
+				<p>示例工程请参见：<a href="https://github.com/node-pinus/pinus-example">https://github.com/node-pinus/pinus-example</a></p>
+				<p>手动安装：
+				npm install pinus -g</p>
+				<p>mkdir testProject
+					cd testProject
+					初始化项目
+				pinus init</p>
+				<h2 id="pinus-a-fast-scalable-game-server-framework-for-node-js">Pinus -- a fast, scalable game server framework for node.js</h2>
+				<p>Pinus is a fast, scalable game server framework for <a href="http://nodejs.org">node.js</a>.
+					It provides the basic development framework and many related components, including libraries and tools.
+				Pinus is also suitable for real-time web applications; its distributed architecture makes pinus scale better than other real-time web frameworks.</p>
+				<h2 id="features">Features</h2>
+				<h3 id="complete-support-of-game-server-and-realtime-application-server-architecture">Complete support of game server and realtime application server architecture</h3>
+				<ul>
+					<li>Multiple-player game: mobile, social, web, MMO rpg(middle size)</li>
+					<li>Realtime application: chat,  message push, etc.</li>
+				</ul>
+				<h3 id="fast-scalable">Fast, scalable</h3>
+				<ul>
+					<li>Distributed (multi-process) architecture, can be easily scale up</li>
+					<li>Flexible server extension</li>
+					<li>Full performance optimization and test</li>
+				</ul>
+				<h3 id="easy">Easy</h3>
+				<ul>
+					<li>Simple API: request, response, broadcast, etc.</li>
+					<li>Lightweight: high development efficiency based on node.js</li>
+					<li>Convention over configuration: almost zero config</li>
+				</ul>
+				<h3 id="powerful">Powerful</h3>
+				<ul>
+					<li>Many clients support, including javascript, flash, android, iOS, cocos2d-x, C</li>
+					<li>Many libraries and tools, including command line tool, admin tool, performance test tool, AI, path finding etc.</li>
+					<li>Good reference materials: full docs, many examples and <a href="https://github.com/NetEase/pinus/wiki/Introduction-to--Lord-of-Pinus">an open-source MMO RPG demo</a></li>
+				</ul>
+				<h3 id="extensible">Extensible</h3>
+				<ul>
+					<li>Support plugin architecture, easy to add new features through plugins. We also provide many plugins like online status, master high availability.</li>
+					<li>Custom features, users can define their own network protocol, custom components very easy.</li>
+				</ul>
+				<h2 id="why-should-i-use-pinus-">Why should I use pinus?</h2>
+				<p>Fast, scalable, real-time game server development is not an easy job, and a good container or framework can reduce its complexity.
+				Unfortunately, unlike web, finding a game server framework solution is difficult, especially an open source solution. Pinus fills this gap, providing a full solution for building game server frameworks.</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module tsd-parent-kind-class">
+						<a href="modules/udpsocket.internal.html">Udp<wbr>Socket.internal</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="enums/appevents.html" class="tsd-kind-icon">App<wbr>Events</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/command.html" class="tsd-kind-icon">COMMAND</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/dir.html" class="tsd-kind-icon">DIR</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/filepath.html" class="tsd-kind-icon">FILEPATH</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/keywords.html" class="tsd-kind-icon">KEYWORDS</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/lifecycle.html" class="tsd-kind-icon">LIFECYCLE</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/platform.html" class="tsd-kind-icon">PLATFORM</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/reserved.html" class="tsd-kind-icon">RESERVED</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/signal.html" class="tsd-kind-icon">SIGNAL</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/time.html" class="tsd-kind-icon">TIME</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/application.html" class="tsd-kind-icon">Application</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/backendsession.html" class="tsd-kind-icon">Backend<wbr>Session</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/backendsessioncomponent.html" class="tsd-kind-icon">Backend<wbr>Session<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/backendsessionservice.html" class="tsd-kind-icon">Backend<wbr>Session<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/bufferpushscheduler.html" class="tsd-kind-icon">Buffer<wbr>Push<wbr>Scheduler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/channel.html" class="tsd-kind-icon">Channel</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/channelcomponent.html" class="tsd-kind-icon">Channel<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/channelremote.html" class="tsd-kind-icon">Channel<wbr>Remote</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/channelservice.html" class="tsd-kind-icon">Channel<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/connectioncomponent.html" class="tsd-kind-icon">Connection<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/connectionservice.html" class="tsd-kind-icon">Connection<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/connectorcomponent.html" class="tsd-kind-icon">Connector<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/consolemodule.html" class="tsd-kind-icon">Console<wbr>Module</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/countdownlatch.html" class="tsd-kind-icon">Count<wbr>Down<wbr>Latch</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/dictionarycomponent.html" class="tsd-kind-icon">Dictionary<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/directpushscheduler.html" class="tsd-kind-icon">Direct<wbr>Push<wbr>Scheduler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/filterservice.html" class="tsd-kind-icon">Filter<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/frontendsession.html" class="tsd-kind-icon">Frontend<wbr>Session</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/handlerservice.html" class="tsd-kind-icon">Handler<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/handshakecommand.html" class="tsd-kind-icon">Handshake<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/heartbeatcommand.html" class="tsd-kind-icon">Heartbeat<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/hybridconnector.html" class="tsd-kind-icon">Hybrid<wbr>Connector</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/hybridsocket.html" class="tsd-kind-icon">Hybrid<wbr>Socket</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/hybridswitcher.html" class="tsd-kind-icon">Hybrid<wbr>Switcher</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/mqttconnector.html" class="tsd-kind-icon">MQTTConnector</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/mqttsocket.html" class="tsd-kind-icon">MQTTSocket</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/mastercomponent.html" class="tsd-kind-icon">Master<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/masterserver.html" class="tsd-kind-icon">Master<wbr>Server</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/masterwatchermodule.html" class="tsd-kind-icon">Master<wbr>Watcher<wbr>Module</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/monitor.html" class="tsd-kind-icon">Monitor</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/monitorcomponent.html" class="tsd-kind-icon">Monitor<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/monitorwatchermodule.html" class="tsd-kind-icon">Monitor<wbr>Watcher<wbr>Module</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/mqttadaptor.html" class="tsd-kind-icon">Mqtt<wbr>Adaptor</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/msgremote.html" class="tsd-kind-icon">Msg<wbr>Remote</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/multipushscheduler.html" class="tsd-kind-icon">Multi<wbr>Push<wbr>Scheduler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/pomelo.html" class="tsd-kind-icon">Pomelo</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/protobufcomponent.html" class="tsd-kind-icon">Protobuf<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/proxycomponent.html" class="tsd-kind-icon">Proxy<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/pushschedulercomponent.html" class="tsd-kind-icon">Push<wbr>Scheduler<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/remotecomponent.html" class="tsd-kind-icon">Remote<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/rpclogfilter.html" class="tsd-kind-icon">Rpc<wbr>Log<wbr>Filter</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/rpctoobusyfilter.html" class="tsd-kind-icon">Rpc<wbr>Toobusy<wbr>Filter</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/sioconnector.html" class="tsd-kind-icon">SIOConnector</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/serialfilter.html" class="tsd-kind-icon">Serial<wbr>Filter</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/server.html" class="tsd-kind-icon">Server</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/servercomponent.html" class="tsd-kind-icon">Server<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/session.html" class="tsd-kind-icon">Session</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/sessioncomponent.html" class="tsd-kind-icon">Session<wbr>Component</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/sessionremote.html" class="tsd-kind-icon">Session<wbr>Remote</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/sessionservice.html" class="tsd-kind-icon">Session<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/siosocket.html" class="tsd-kind-icon">Sio<wbr>Socket</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/tcpprocessor.html" class="tsd-kind-icon">TCPProcessor</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/tcpsocket.html" class="tsd-kind-icon">Tcp<wbr>Socket</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/timefilter.html" class="tsd-kind-icon">Time<wbr>Filter</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/timeoutfilter.html" class="tsd-kind-icon">Timeout<wbr>Filter</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/toobusyfilter.html" class="tsd-kind-icon">Toobusy<wbr>Filter</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/udpconnector.html" class="tsd-kind-icon">UDPConnector</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/udpsocket.html" class="tsd-kind-icon">Udp<wbr>Socket</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/wsprocessor.html" class="tsd-kind-icon">WSProcessor</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/watchdog.html" class="tsd-kind-icon">Watchdog</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/applicationeventcontructor.html" class="tsd-kind-icon">Application<wbr>Event<wbr>Contructor</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/applicationoptions.html" class="tsd-kind-icon">Application<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/broadcastoptions.html" class="tsd-kind-icon">Broadcast<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/bufferpushscheduleroptions.html" class="tsd-kind-icon">Buffer<wbr>Push<wbr>Scheduler<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/channelserviceoptions.html" class="tsd-kind-icon">Channel<wbr>Service<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/componentcontructor.html" class="tsd-kind-icon">Component<wbr>Contructor</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/connectorcomponentoptions.html" class="tsd-kind-icon">Connector<wbr>Component<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/consolemoduleoptions.html" class="tsd-kind-icon">Console<wbr>Module<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/countdownlatchoptions.html" class="tsd-kind-icon">Count<wbr>Down<wbr>Latch<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/cron.html" class="tsd-kind-icon">Cron</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/dictionarycomponentoptions.html" class="tsd-kind-icon">Dictionary<wbr>Component<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/handlerserviceoptions.html" class="tsd-kind-icon">Handler<wbr>Service<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/handshakecommandoptions.html" class="tsd-kind-icon">Handshake<wbr>Command<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/heartbeatcommandoptions.html" class="tsd-kind-icon">Heartbeat<wbr>Command<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/hybridconnectoroptions.html" class="tsd-kind-icon">Hybrid<wbr>Connector<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/hybridswitcheroptions.html" class="tsd-kind-icon">Hybrid<wbr>Switcher<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iapplicationevent.html" class="tsd-kind-icon">IApplication<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/icomponent.html" class="tsd-kind-icon">IComponent</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iconnector.html" class="tsd-kind-icon">IConnector</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ihandlerfilter.html" class="tsd-kind-icon">IHandler<wbr>Filter</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ihybridsocket.html" class="tsd-kind-icon">IHybrid<wbr>Socket</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ihybridswitcher.html" class="tsd-kind-icon">IHybrid<wbr>Switcher</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ilifecycle.html" class="tsd-kind-icon">ILife<wbr>Cycle</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iplugin.html" class="tsd-kind-icon">IPlugin</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ipushscheduler.html" class="tsd-kind-icon">IPush<wbr>Scheduler</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/isocket.html" class="tsd-kind-icon">ISocket</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/istore.html" class="tsd-kind-icon">IStore</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/mqttconnectoroptions.html" class="tsd-kind-icon">MQTTConnector<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/masterinfo.html" class="tsd-kind-icon">Master<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/modulerecord.html" class="tsd-kind-icon">Module<wbr>Record</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/monitoroptions.html" class="tsd-kind-icon">Monitor<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/mqttadaptoroptions.html" class="tsd-kind-icon">Mqtt<wbr>Adaptor<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/multipushscheduleroptions.html" class="tsd-kind-icon">Multi<wbr>Push<wbr>Scheduler<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/protobufcomponentoptions.html" class="tsd-kind-icon">Protobuf<wbr>Component<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/proxycomponentoptions.html" class="tsd-kind-icon">Proxy<wbr>Component<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/publishpacket.html" class="tsd-kind-icon">Publish<wbr>Packet</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/pushschedulercomponentoptions.html" class="tsd-kind-icon">Push<wbr>Scheduler<wbr>Component<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/queue.html" class="tsd-kind-icon">Queue</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/queuetask.html" class="tsd-kind-icon">Queue<wbr>Task</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/remotecomponentoptions.html" class="tsd-kind-icon">Remote<wbr>Component<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/routerecord.html" class="tsd-kind-icon">Route<wbr>Record</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/rsakey.html" class="tsd-kind-icon">Rsa<wbr>Key</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/sioconnectoroptions.html" class="tsd-kind-icon">SIOConnector<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/scheduleoptions.html" class="tsd-kind-icon">Schedule<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/serverstartargs.html" class="tsd-kind-icon">Server<wbr>Start<wbr>Args</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/sessionserviceoptions.html" class="tsd-kind-icon">Session<wbr>Service<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/subscribepacket.html" class="tsd-kind-icon">Subscribe<wbr>Packet</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/tcpsocketoptions.html" class="tsd-kind-icon">Tcp<wbr>Socket<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/udpconnectoroptions.html" class="tsd-kind-icon">UDPConnector<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/userloginrecord.html" class="tsd-kind-icon">User<wbr>Login<wbr>Record</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#aconfigurefunc1" class="tsd-kind-icon">AConfigure<wbr>Func1</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#aconfigurefunc2" class="tsd-kind-icon">AConfigure<wbr>Func2</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#aconfigurefunc3" class="tsd-kind-icon">AConfigure<wbr>Func3</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#afterhandlerfilter" class="tsd-kind-icon">After<wbr>Handler<wbr>Filter</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#afterhandlerfilterfunction" class="tsd-kind-icon">After<wbr>Handler<wbr>Filter<wbr>Function</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#beforehandlerfilter" class="tsd-kind-icon">Before<wbr>Handler<wbr>Filter</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#beforehandlerfilterfunction" class="tsd-kind-icon">Before<wbr>Handler<wbr>Filter<wbr>Function</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#beforestophookfunction" class="tsd-kind-icon">Before<wbr>Stop<wbr>Hook<wbr>Function</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#blacklistfunction" class="tsd-kind-icon">Black<wbr>List<wbr>Function</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#configurecallback" class="tsd-kind-icon">Configure<wbr>Callback</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#countdownlatchcallback" class="tsd-kind-icon">Count<wbr>Down<wbr>Latch<wbr>Callback</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#frontendid" class="tsd-kind-icon">FRONTENDID</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#frontendorbackendsession" class="tsd-kind-icon">Frontend<wbr>OrBackend<wbr>Session</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#handler" class="tsd-kind-icon">Handler</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#handlercallback" class="tsd-kind-icon">Handler<wbr>Callback</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#handlermap" class="tsd-kind-icon">Handler<wbr>Map</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#handlermethod" class="tsd-kind-icon">Handler<wbr>Method</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#handlers" class="tsd-kind-icon">Handlers</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#hanshakefunction" class="tsd-kind-icon">Hanshake<wbr>Function</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#idecoder" class="tsd-kind-icon">IDecoder</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#iencoder" class="tsd-kind-icon">IEncoder</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#ipushselector" class="tsd-kind-icon">IPush<wbr>Selector</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#masterserveroptions" class="tsd-kind-icon">Master<wbr>Server<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#objecttype" class="tsd-kind-icon">Object<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#routecallback" class="tsd-kind-icon">Route<wbr>Callback</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#routefunction" class="tsd-kind-icon">Route<wbr>Function</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#routemaps" class="tsd-kind-icon">Route<wbr>Maps</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#sid" class="tsd-kind-icon">SID</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#serveroptions" class="tsd-kind-icon">Server<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#transactioncondictionfunction" class="tsd-kind-icon">Transaction<wbr>Condiction<wbr>Function</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#transactionhandlerfunction" class="tsd-kind-icon">Transaction<wbr>Handler<wbr>Function</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#uid" class="tsd-kind-icon">UID</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#clean_session_mask" class="tsd-kind-icon">CLEAN_<wbr>SESSION_<wbr>MASK</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#cmd_mask" class="tsd-kind-icon">CMD_<wbr>MASK</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#cmd_shift" class="tsd-kind-icon">CMD_<wbr>SHIFT</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#code_ok" class="tsd-kind-icon">CODE_<wbr>OK</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#code_old_client" class="tsd-kind-icon">CODE_<wbr>OLD_<wbr>CLIENT</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#code_use_error" class="tsd-kind-icon">CODE_<wbr>USE_<wbr>ERROR</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#default_flush_interval" class="tsd-kind-icon">DEFAULT_<wbr>FLUSH_<wbr>INTERVAL</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#default_maxlag" class="tsd-kind-icon">DEFAULT_<wbr>MAXLAG</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#default_size" class="tsd-kind-icon">DEFAULT_<wbr>SIZE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#default_timeout" class="tsd-kind-icon">DEFAULT_<wbr>TIMEOUT</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#dup_mask" class="tsd-kind-icon">DUP_<wbr>MASK</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#exported_fields" class="tsd-kind-icon">EXPORTED_<wbr>FIELDS</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#exported_session_fields" class="tsd-kind-icon">EXPORTED_<wbr>SESSION_<wbr>FIELDS</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#frontend_session_fields" class="tsd-kind-icon">FRONTEND_<wbr>SESSION_<wbr>FIELDS</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#head_size" class="tsd-kind-icon">HEAD_<wbr>SIZE</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#http_methods" class="tsd-kind-icon">HTTP_<wbr>METHODS</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#length_fin_mask" class="tsd-kind-icon">LENGTH_<wbr>FIN_<wbr>MASK</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#length_mask" class="tsd-kind-icon">LENGTH_<wbr>MASK</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#password_mask" class="tsd-kind-icon">PASSWORD_<wbr>MASK</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#pkg_head_bytes" class="tsd-kind-icon">PKG_<wbr>HEAD_<wbr>BYTES</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#pkg_id_bytes" class="tsd-kind-icon">PKG_<wbr>ID_<wbr>BYTES</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#pkg_route_length_bytes" class="tsd-kind-icon">PKG_<wbr>ROUTE_<wbr>LENGTH_<wbr>BYTES</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#package" class="tsd-kind-icon">Package</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#qos_mask" class="tsd-kind-icon">QOS_<wbr>MASK</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#qos_shift" class="tsd-kind-icon">QOS_<wbr>SHIFT</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#retain_mask" class="tsd-kind-icon">RETAIN_<wbr>MASK</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#state_inited" class="tsd-kind-icon">STATE_<wbr>INITED</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#state_start" class="tsd-kind-icon">STATE_<wbr>START</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#state_started" class="tsd-kind-icon">STATE_<wbr>STARTED</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#state_stoped" class="tsd-kind-icon">STATE_<wbr>STOPED</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#st_body" class="tsd-kind-icon">ST_<wbr>BODY</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#st_closed" class="tsd-kind-icon">ST_<wbr>CLOSED</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#st_destroyed" class="tsd-kind-icon">ST_<wbr>DESTROYED</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#st_head" class="tsd-kind-icon">ST_<wbr>HEAD</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#st_inited" class="tsd-kind-icon">ST_<wbr>INITED</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#st_started" class="tsd-kind-icon">ST_<wbr>STARTED</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#st_stoped" class="tsd-kind-icon">ST_<wbr>STOPED</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#st_wait_ack" class="tsd-kind-icon">ST_<wbr>WAIT_<wbr>ACK</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#st_working" class="tsd-kind-icon">ST_<wbr>WORKING</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#username_mask" class="tsd-kind-icon">USERNAME_<wbr>MASK</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#will_flag_mask" class="tsd-kind-icon">WILL_<wbr>FLAG_<wbr>MASK</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#will_qos_mask" class="tsd-kind-icon">WILL_<wbr>QOS_<wbr>MASK</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#will_qos_shift" class="tsd-kind-icon">WILL_<wbr>QOS_<wbr>SHIFT</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#will_retain_mask" class="tsd-kind-icon">WILL_<wbr>RETAIN_<wbr>MASK</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#adminlogger" class="tsd-kind-icon">admin<wbr>Logger</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#codes" class="tsd-kind-icon">codes</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#conlogger" class="tsd-kind-icon">con<wbr>Logger</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#cpus" class="tsd-kind-icon">cpus</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#crashlogger" class="tsd-kind-icon">crash<wbr>Logger</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#curid" class="tsd-kind-icon">cur<wbr>Id</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#env" class="tsd-kind-icon">env</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#forwardlogger" class="tsd-kind-icon">forward<wbr>Logger</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#handlers" class="tsd-kind-icon">handlers</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#httpserver" class="tsd-kind-icon">http<wbr>Server</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#localips" class="tsd-kind-icon">local<wbr>Ips</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#logger" class="tsd-kind-icon">logger</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#pinus" class="tsd-kind-icon">pinus</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#promisify" class="tsd-kind-icon">promisify</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#queues" class="tsd-kind-icon">queues</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#rpclogger" class="tsd-kind-icon">rpc<wbr>Logger</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#rsa" class="tsd-kind-icon">rsa</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#sequeue" class="tsd-kind-icon">sequeue</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#timeout" class="tsd-kind-icon">timeout</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#toobusy" class="tsd-kind-icon">toobusy</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#transactionerrorlogger" class="tsd-kind-icon">transaction<wbr>Error<wbr>Logger</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#transactionlogger" class="tsd-kind-icon">transaction<wbr>Logger</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#backendsessioncb" class="tsd-kind-icon">Backend<wbr>SessionCB</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#add" class="tsd-kind-icon">add</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#addcron" class="tsd-kind-icon">add<wbr>Cron</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter tsd-is-not-exported">
+						<a href="globals.html#addfilter" class="tsd-kind-icon">add<wbr>Filter</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#addserver" class="tsd-kind-icon">add<wbr>Server</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#addservers" class="tsd-kind-icon">add<wbr>Servers</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#addtask" class="tsd-kind-icon">add<wbr>Task</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#addtostore" class="tsd-kind-icon">add<wbr>ToStore</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#afterfilter" class="tsd-kind-icon">after<wbr>Filter</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#arraydiff" class="tsd-kind-icon">array<wbr>Diff</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#beforefilter" class="tsd-kind-icon">before<wbr>Filter</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#bindcpu" class="tsd-kind-icon">bind<wbr>Cpu</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#blacklist" class="tsd-kind-icon">blacklist</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#checkandadd" class="tsd-kind-icon">check<wbr>And<wbr>Add</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#checkcluster" class="tsd-kind-icon">check<wbr>Cluster</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#checkport" class="tsd-kind-icon">check<wbr>Port</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#checktypedata" class="tsd-kind-icon">check<wbr>Type<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#clone" class="tsd-kind-icon">clone</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#closequeue" class="tsd-kind-icon">close<wbr>Queue</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#composepush" class="tsd-kind-icon">compose<wbr>Push</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#composeresponse" class="tsd-kind-icon">compose<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#configlogger" class="tsd-kind-icon">config<wbr>Logger</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#configure" class="tsd-kind-icon">configure</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#containcron" class="tsd-kind-icon">contain<wbr>Cron</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#contains" class="tsd-kind-icon">contains</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#create" class="tsd-kind-icon">create</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#createcountdownlatch" class="tsd-kind-icon">create<wbr>Count<wbr>Down<wbr>Latch</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#dclone" class="tsd-kind-icon">dclone</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#decode" class="tsd-kind-icon">decode</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#default" class="tsd-kind-icon">default</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#defaultconfiguration" class="tsd-kind-icon">default<wbr>Configuration</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#defaultroute" class="tsd-kind-icon">default<wbr>Route</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#deletefrom" class="tsd-kind-icon">delete<wbr>From</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#doforward" class="tsd-kind-icon">do<wbr>Forward</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#dohandle" class="tsd-kind-icon">do<wbr>Handle</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#encode" class="tsd-kind-icon">encode</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#encodebatch" class="tsd-kind-icon">encode<wbr>Batch</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#encodebody" class="tsd-kind-icon">encode<wbr>Body</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#endswith" class="tsd-kind-icon">ends<wbr>With</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#extendsobject" class="tsd-kind-icon">extends<wbr>Object</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#finishstart" class="tsd-kind-icon">finish<wbr>Start</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#format" class="tsd-kind-icon">format</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#genkey" class="tsd-kind-icon">gen<wbr>Key</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#genproxies" class="tsd-kind-icon">gen<wbr>Proxies</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#genroutefun" class="tsd-kind-icon">gen<wbr>Route<wbr>Fun</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#genrpcclient" class="tsd-kind-icon">gen<wbr>Rpc<wbr>Client</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#genvalue" class="tsd-kind-icon">gen<wbr>Value</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#gen_length" class="tsd-kind-icon">gen_<wbr>length</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#gen_number" class="tsd-kind-icon">gen_<wbr>number</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#gen_string" class="tsd-kind-icon">gen_<wbr>string</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#getconnector" class="tsd-kind-icon">get<wbr>Connector</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#getcronpath" class="tsd-kind-icon">get<wbr>Cron<wbr>Path</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#getdefaultconnector" class="tsd-kind-icon">get<wbr>Default<wbr>Connector</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#gethandlerpath" class="tsd-kind-icon">get<wbr>Handler<wbr>Path</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#getlogpath" class="tsd-kind-icon">get<wbr>Log<wbr>Path</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#getproxyrecords" class="tsd-kind-icon">get<wbr>Proxy<wbr>Records</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#getresp" class="tsd-kind-icon">get<wbr>Resp</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#getscheduler" class="tsd-kind-icon">get<wbr>Scheduler</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#getscriptpath" class="tsd-kind-icon">get<wbr>Script<wbr>Path</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#getsysremotepath" class="tsd-kind-icon">get<wbr>Sys<wbr>Remote<wbr>Path</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#getuserremotepath" class="tsd-kind-icon">get<wbr>User<wbr>Remote<wbr>Path</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#handle" class="tsd-kind-icon">handle</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#handledata" class="tsd-kind-icon">handle<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#handleerror" class="tsd-kind-icon">handle<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#handlehandshake" class="tsd-kind-icon">handle<wbr>Handshake</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#handlehandshakeack" class="tsd-kind-icon">handle<wbr>Handshake<wbr>Ack</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#handleheartbeat" class="tsd-kind-icon">handle<wbr>Heartbeat</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#haschinesechar" class="tsd-kind-icon">has<wbr>Chinese<wbr>Char</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#hasproxy" class="tsd-kind-icon">has<wbr>Proxy</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#headhandler" class="tsd-kind-icon">head<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#inlocal" class="tsd-kind-icon">in<wbr>Local</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#initfilter" class="tsd-kind-icon">init<wbr>Filter</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#inithandler" class="tsd-kind-icon">init<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#invokecallback" class="tsd-kind-icon">invoke<wbr>Callback</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#ishttp" class="tsd-kind-icon">is<wbr>Http</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#islocal" class="tsd-kind-icon">is<wbr>Local</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#isobject" class="tsd-kind-icon">is<wbr>Object</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#isready" class="tsd-kind-icon">is<wbr>Ready</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#kill" class="tsd-kind-icon">kill</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#list" class="tsd-kind-icon">list</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#listuserremotedir" class="tsd-kind-icon">list<wbr>User<wbr>Remote<wbr>Dir</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#loadallfromstore" class="tsd-kind-icon">load<wbr>All<wbr>From<wbr>Store</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#loadcluster" class="tsd-kind-icon">load<wbr>Cluster</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#loadcronhandlers" class="tsd-kind-icon">load<wbr>Cron<wbr>Handlers</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#loadcrons" class="tsd-kind-icon">load<wbr>Crons</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#loaddefaultcomponents" class="tsd-kind-icon">load<wbr>Default<wbr>Components</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#loadlifecycle" class="tsd-kind-icon">load<wbr>Lifecycle</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#loadmaster" class="tsd-kind-icon">load<wbr>Master</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#loadmodules" class="tsd-kind-icon">load<wbr>Modules</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#loadservers" class="tsd-kind-icon">load<wbr>Servers</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#localrun" class="tsd-kind-icon">localrun</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#optcomponents" class="tsd-kind-icon">opt<wbr>Components</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#optlifecycles" class="tsd-kind-icon">opt<wbr>Lifecycles</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#parseargs" class="tsd-kind-icon">parse<wbr>Args</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#parseintfield" class="tsd-kind-icon">parse<wbr>Int<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#parseroute" class="tsd-kind-icon">parse<wbr>Route</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#ping" class="tsd-kind-icon">ping</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#processargs" class="tsd-kind-icon">process<wbr>Args</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#processerror" class="tsd-kind-icon">process<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#publish" class="tsd-kind-icon">publish</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#query" class="tsd-kind-icon">query</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#randint" class="tsd-kind-icon">randint</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#record" class="tsd-kind-icon">record</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#registerdefaultmodules" class="tsd-kind-icon">register<wbr>Default<wbr>Modules</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#remotepathrecord" class="tsd-kind-icon">remote<wbr>Path<wbr>Record</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#removeallfromstore" class="tsd-kind-icon">remove<wbr>All<wbr>From<wbr>Store</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#removecron" class="tsd-kind-icon">remove<wbr>Cron</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#removefromstore" class="tsd-kind-icon">remove<wbr>From<wbr>Store</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#removeserver" class="tsd-kind-icon">remove<wbr>Server</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#removeservers" class="tsd-kind-icon">remove<wbr>Servers</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#replaceserver" class="tsd-kind-icon">replace<wbr>Server</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#replaceservers" class="tsd-kind-icon">replace<wbr>Servers</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#reset" class="tsd-kind-icon">reset</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#response" class="tsd-kind-icon">response</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#restart" class="tsd-kind-icon">restart</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#restorechannel" class="tsd-kind-icon">restore<wbr>Channel</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#rpcinvoke" class="tsd-kind-icon">rpc<wbr>Invoke</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#run" class="tsd-kind-icon">run</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#runserver" class="tsd-kind-icon">run<wbr>Server</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#runservers" class="tsd-kind-icon">run<wbr>Servers</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#schedulecrons" class="tsd-kind-icon">schedule<wbr>Crons</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#send" class="tsd-kind-icon">send</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#sendcroninfo" class="tsd-kind-icon">send<wbr>Cron<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#sendmessagebygroup" class="tsd-kind-icon">send<wbr>Message<wbr>ByGroup</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#setupenv" class="tsd-kind-icon">setup<wbr>Env</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#setupheartbeat" class="tsd-kind-icon">setup<wbr>Heartbeat</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#size" class="tsd-kind-icon">size</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#spawnprocess" class="tsd-kind-icon">spawn<wbr>Process</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#sshrun" class="tsd-kind-icon">sshrun</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#startbytype" class="tsd-kind-icon">start<wbr>ByType</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#startcluster" class="tsd-kind-icon">start<wbr>Cluster</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#startmodule" class="tsd-kind-icon">start<wbr>Module</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#startmodules" class="tsd-kind-icon">start<wbr>Modules</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#startover" class="tsd-kind-icon">start<wbr>Over</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#startserver" class="tsd-kind-icon">start<wbr>Server</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#startswith" class="tsd-kind-icon">starts<wbr>With</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#stop" class="tsd-kind-icon">stop</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#stopcomps" class="tsd-kind-icon">stop<wbr>Comps</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#subscribe" class="tsd-kind-icon">subscribe</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#subscriberequest" class="tsd-kind-icon">subscribe<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#transaction" class="tsd-kind-icon">transaction</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#unicodetoutf8" class="tsd-kind-icon">unicode<wbr>ToUtf8</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#unsubscribe" class="tsd-kind-icon">unsubscribe</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#watchhandlers" class="tsd-kind-icon">watch<wbr>Handlers</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="globals.html#clusterinfo" class="tsd-kind-icon">Cluster<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="globals.html#croninfo" class="tsd-kind-icon">Cron<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="globals.html#removecron" class="tsd-kind-icon">Remove<wbr>Cron</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="globals.html#serverinfo" class="tsd-kind-icon">Server<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="globals.html#mastermethods" class="tsd-kind-icon">master<wbr>Methods</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="globals.html#monitormethods" class="tsd-kind-icon">monitor<wbr>Methods</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#types" class="tsd-kind-icon">types</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer>
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
