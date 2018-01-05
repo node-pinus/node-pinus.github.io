@@ -1,18 +1,157 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang }}">
+<html lang="zh-cn">
 <head>
-  <title>{{ page.title if page.title else 'Pinus' }} - {{ __('index.slogan') }}</title>
+  <title>快速入门 - 让做游戏变得简单</title>
   <meta charset="utf-8">
-  <meta name="description" content="{{ __('index.description') }}">
+  <meta name="description" content="index.description">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  {% include "partial/head.nunjucks" %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+<link rel="stylesheet" href="/css/index.css">
+
 </head>
 <body>
-  {% include "partial/header.nunjucks" %}
+  <div class="nav" >
+  <header>
+    <a href="/zh-cn" class="nav-logo leftpadding" alt="Pinus"><img src="/images/nav-logo.png" > Pinus</a>
+    <ul class="nav-item">
+      <li><a href="/zh-cn/introduce.html" alt="文档指南">文档指南</a></li><li><a href="/zh-cn/api.html" alt="API 接口">API 接口</a></li><li><a href="https://github.com/node-pinus/pinus/releases" alt="发布日志">发布日志</a></li>
+      <!--
+      <li class="translations">
+        <a class="nav-link">header.translations</a>
+        <span class="arrow"></span>
+        <ul class="dropdown-content">
+          <li><a href="/">中文</a></li>
+          <li><a href="/">English</a></li>
+        </ul>
+      </li>
+      -->
+      <li><iframe src="https://ghbtns.com/github-btn.html?user=node-pinus&repo=pinus&type=star&count=true" frameborder="0" scrolling="0" width="150px" height="20px"></iframe></li>
+    </ul>
+    <a id="mobileTrigger" href="#" class="mobile-trigger">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </a>
+  </header>
+</div>
+
   <div id="container" class="container">
-    {{ body }}
+    <div class="page-main">
+  <article class="markdown-body">
+    <h1>快速入门</h1>
+    <h2 id="环境依赖"><a class="markdown-anchor" href="#环境依赖">#</a> 环境依赖</h2>
+<p>操作系统：支持 macOS，Linux，Windows
+运行环境：node.js建议选择 LTS 版本，最低要求 8.x</p>
+<h2 id="安装"><a class="markdown-anchor" href="#安装">#</a> 安装</h2>
+<p>Pinus 可以直接安装在应用程序中，也可以安装在全局。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm i pinus -g  // 安装在全局</span><br><span class="line">npm i pinus --save   // 安装在应用</span><br></pre></td></tr></table></figure>
+<h2 id="新建项目"><a class="markdown-anchor" href="#新建项目">#</a> 新建项目</h2>
+<p>使用pinus的命令行工具可以快速创建一个项目，命令如下：</p>
+<pre><code>$ pinus init ./HelloWorld
+</code></pre>
+<p>或者你也可以使用下面的三个命令：</p>
+<pre><code>$ mkdir HelloWorld
+$ cd HelloWorld
+$ pinus init
+</code></pre>
+<p>这两种创建方式是等价的，更多关于pinus命令行使用的文档，请参阅<a href="pinus-cli.html">pinus命令行工具使用</a>。在初始化项目的时候，用户需要选择其底层使用的通信协议（<strong>暂时只支持1 websocket模式</strong>），分为socket.io和websocket。</p>
+<p>然后，进入到HelloWorld文件夹，安装依赖包：</p>
+<pre><code>$ sh npm-install.sh
+</code></pre>
+<p>windows用户，可以直接运行 <code>npm-install.bat</code></p>
+<h2 id="项目目录结构"><a class="markdown-anchor" href="#项目目录结构">#</a> 项目目录结构</h2>
+<p>让我们来看看一个pinus项目的大致结构</p>
+<p>新建立的项目结构如下图所示：</p>
+<p><img src="images/HelloWorldFolder.png" alt="项目目录结构"></p>
+<p>该目录结构很清楚地展示了游戏项目的前后端分层结构，分别在各个目录下填写相关代码，即可快速开发游戏。下面对各个目录进行简要分析：</p>
+<h4 id="game-server"><a class="markdown-anchor" href="#game-server">#</a> game-server</h4>
+<p>game-server是用pinus框架搭建的游戏服务器，以文件app.js作为入口，运行游戏的所有逻辑和功能。在接下来的开发中，所有游戏逻辑、功能、配置等都在该目录下进行。</p>
+<ul>
+<li>app子目录</li>
+</ul>
+<p>这个目录下放置所有的游戏服务器代码的地方，用户在这里实现不同类型的服务器，添加对应的Handler，Remote等等。</p>
+<ul>
+<li>config子目录</li>
+</ul>
+<p>game-server下config包括了游戏服务器的所有配置信息。配置信息以JSON文件的格式进行定义，包含有日志、master、server等服务器的配置信息。该目录还可以进行扩展，对数据库配置信息、地图信息和数值表等信息进行定义。总而言之，这里是放着所有游戏服务器相关的配置信息的地方。</p>
+<ul>
+<li>logs子目录</li>
+</ul>
+<p>日志是项目中不可或缺的，可以对项目的运行情况进行很好的备份，也是系统运维的参考数据之一，logs存放了游戏服务器所有的日志信息。</p>
+<h4 id="shared"><a class="markdown-anchor" href="#shared">#</a> shared</h4>
+<p>shared存放一些前后端、game-server与web-server共用代码，由于都是javascript代码，那么对于一些工具或者算法代码，就可以前后端共用，极大地提高了代码重用性。</p>
+<h4 id="web-server"><a class="markdown-anchor" href="#web-server">#</a> web-server</h4>
+<p>web-server是用<a href="http://expressjs.com" target="_blank" rel="noopener">express 3.x</a>框架搭建的web服务器，以文件app.js作为入口，当然开发者可以选择Nginx等其他web服务器。如果游戏的客户端不是web的话，如Android平台的话，这个目录就不是必须的了。当然，在这个例子中，我们的客户端是web，所以web服务器还是必须的。</p>
+<h2 id="启动项目"><a class="markdown-anchor" href="#启动项目">#</a> 启动项目</h2>
+<p>对于我们这个例子来说，由于客户端是web，所以必须启动game-server(游戏服务器)和web-server(web服务器)</p>
+<p>编译game-server服务器：</p>
+<pre><code>$ cd game-server
+$ npm run build
+</code></pre>
+<p>启动game-server服务器：</p>
+<pre><code>$ cd dist
+$ pinus start
+</code></pre>
+<p>启动web-server服务器：</p>
+<pre><code>$ cd web-server
+$ node app 
+</code></pre>
+<p>在启动过程中可能会有端口号冲突导致启动不成功，只需在config里面修改使用的端口号即可。如果上面的启动都没有问题的话，我们就可以对我们的HelloWorld进行测试了。用浏览器(推荐使用chrome)访问 <code>http://localhost:3001</code>或者 <code>http://127.0.0.1:3001</code> 即可, 点击Test Game Server，提示 <em>game server is ok</em> 说明运行成功，如下图所示：</p>
+<p><img src="images/helloworld_test_snapshot.png" alt="test"></p>
+<h2 id="查看服务器"><a class="markdown-anchor" href="#查看服务器">#</a> 查看服务器</h2>
+<p>可以使用<code>pinus list</code>查看已经启动的服务器，如下图所示：</p>
+<p><img src="images/list_snapshot.png" alt="test"></p>
+<p>服务器状态可以查看5种状态信息：</p>
+<ul>
+<li>serverId：服务器的serverId，同config配置表中的id。</li>
+<li>serverType：服务器的serverType，同config配置表中的type。</li>
+<li>pid：服务器对应的进程pid。</li>
+<li>heapUsed：该服务器已经使用的堆大小（单位：兆）。</li>
+<li>uptime：该服务器启动时长（单位：分钟）。</li>
+</ul>
+<h2 id="关闭项目"><a class="markdown-anchor" href="#关闭项目">#</a> 关闭项目</h2>
+<p>可以使用以下两种方式关闭项目：</p>
+<pre><code>$ cd game-server/dist
+$ pinus stop
+</code></pre>
+<p>或者</p>
+<pre><code>$ cd game-server/dist
+$ pinus kill
+</code></pre>
+<p>其中<code>pinus stop</code>比较优雅，<code>pinus kill</code>比较粗暴，安全性低，开发环境下可以使用，产品环境慎用，更详细的pinus命令行用法请参阅<a href="pinus-cli.html">pinus命令行工具使用</a>。</p>
+<h2 id="小结"><a class="markdown-anchor" href="#小结">#</a> 小结</h2>
+<p>到这里为止，我们已经成功安装了pinus，并成功运行了HelloWorld。接下来，建议你看一下pinus整体的一个较详细的概述。
+如果你已经迫不及待地想写代码，可以去pinus例子教程, 那里以一个chat应用为例，一步一步地向你展示如何来使用pinus进行一个实际应用的开发，以及pinus的一些API的使用方式等。</p>
+
+  </article>
+  <aside id="mobileAside" class="toc">
+  <div class="mobile-menu">
+    <ul><li><a href="/zh-cn/introduce.html" alt="文档指南">文档指南</a></li><li><a href="/zh-cn/api.html" alt="API 接口">API 接口</a></li><li><a href="https://github.com/node-pinus/pinus/releases" alt="发布日志">发布日志</a></li></ul>
+  </div>
+  <dl><dt><a href="/zh-cn/introduce.html">Pinus 是什么？</a></dt></ul></dd><dt><a href="/zh-cn/frameworkIntro.html">Pinus架构概览</a></dt></ul></dd><dt><a href="/zh-cn/quickstart.html">快速入门</a></dt></ul></dd><dt>API 接口</dt><dd><ul><li><a href="/zh-cn/../api-reference/pinus/globals.html">pinus</a></li><li><a href="/zh-cn/../api-reference/pinus-admin/globals.html">pinus-admin</a></li><li><a href="/zh-cn/../api-reference/pinus-cli/globals.html">pinus-cli</a></li><li><a href="/zh-cn/../api-reference/pinus-loader/globals.html">pinus-loader</a></li><li><a href="/zh-cn/../api-reference/pinus-logger/globals.html">pinus-logger</a></li><li><a href="/zh-cn/../api-reference/pinus-monitor/globals.html">pinus-monitor</a></li><li><a href="/zh-cn/../api-reference/pinus-protobuf/globals.html">pinus-protobuf</a></li><li><a href="/zh-cn/../api-reference/pinus-protocol/globals.html">pinus-protocol</a></li><li><a href="/zh-cn/../api-reference/pinus-rpc/globals.html">pinus-rpc</a></li><li><a href="/zh-cn/../api-reference/pinus-scheduler/globals.html">pinus-scheduler</a></li></ul></dd></dl>
+</aside>
+<script>
+var mobileTrigger = document.getElementById('mobileTrigger');
+var mobileAside = document.getElementById('mobileAside');
+mobileTrigger.onclick = function(e) {
+  e.preventDefault();
+  if (mobileAside.className.indexOf('mobile-show') === -1) {
+    mobileAside.className += ' mobile-show';
+  } else {
+    mobileAside.className = 'toc';
+  }
+};
+</script>
+
+</div>
+
   </div>
 </body>
-{% include "partial/foot.nunjucks" %}
+<div class="cnzz">
+<script src="https://s19.cnzz.com/z_stat.php?id=1271324644&web_id=1271324644" language="JavaScript"></script>
+</div>
+
 </html>
