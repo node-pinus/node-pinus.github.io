@@ -1,0 +1,691 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>pinus-admin</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">pinus-admin</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> pinus-admin</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<p><a href="https://travis-ci.org/node-pinus/pinus-admin"><img src="https://travis-ci.org/node-pinus/pinus-admin.svg?branch=master" alt="Build Status"></a></p>
+				<p>#pomelo-admin</p>
+				<p><code>pomelo-admin</code> is an admin console library for <a href="https://github.com/NetEase/pomelo">pomelo</a>. It provides the a series of utilities to monitor the <code>pomelo</code> server clusters.</p>
+				<p>##Installation</p>
+				<pre><code>npm <span class="hljs-keyword">install</span> pomelo-<span class="hljs-keyword">admin</span>
+</code></pre><p>##Basic conception</p>
+				<p>###Process roles</p>
+				<p>There are three process roles in <code>pomelo-admin</code>: master, monitor and client.</p>
+				<ul>
+					<li><p>master - the master server process, collects and maintains all the client and monitor status and exports the cluster status for the clients.  </p>
+					</li>
+					<li><p>monitor - monitor proxy, in every server process which needs to be monitored. It should be started during the process starts and registers itself to the master server and reports the monitored process status to the master. </p>
+					</li>
+					<li><p>client - <code>pomelo-admin</code> client process that fetches the status from master server, such as <a href="https://github.com/NetEase/pomelo-admin-web">pomelo-admin-web</a> and <a href="https://github.com/NetEase/pomelo-cli">pomelo-cli</a>.</p>
+					</li>
+				</ul>
+				<p>###Message types</p>
+				<p>There are two message types of the communication between processes.</p>
+				<ul>
+					<li><p>request - bidirectional message that cooperated with response.</p>
+					</li>
+					<li><p>notify - unidirectional message.</p>
+					</li>
+				</ul>
+				<p>##Components</p>
+				<p>###ConsoleService </p>
+				<p>Main service of <code>pomelo-admin</code> that runs in both master and monitor processes. It maintains the master agent or monitor agent for the process, loads the registed modules and provides the messages routing service for the messages from other processes.</p>
+				<p>###MasterAgent  </p>
+				<p><code>pomelo-admin</code> agent that runs on the master process to provide the basic network communication and protocol encoding and decoding.</p>
+				<p>###MonitorAgent  </p>
+				<p><code>pomelo-admin</code> agent that runs on the monitor process to provide the basic network communication and protocol encoding and decoding. </p>
+				<p>###Module  </p>
+				<p>Module is the place to implement the monitor logic, such as process status collecting. Developer can register modules in <code>pomelo-admin</code> to customize all kinds of system monitors.</p>
+				<p>There are three optional callback functions in each module.</p>
+				<ul>
+					<li><p>function masterHandler(agent, msg, cb) - callback in master process to process a message from monitor process or a timer event in master process.</p>
+					</li>
+					<li><p>function monitorHandler(agent, msg, cb) - callback in monitor process to process a message from master process or a timer event in monitor process.</p>
+					</li>
+					<li><p>function clientHandler(agent, msg, cb) - callback in master process to process a message from client.</p>
+					</li>
+				</ul>
+				<p>The relations of the components is as below:</p>
+				<center>
+					<img src="http://pomelo.netease.com/resource/documentImage/pomelo-admin-arch.png" alt="pomelo-admin-arch">
+				</center>
+				<p>##Usage</p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> admin = <span class="hljs-built_in">require</span>(<span class="hljs-string">"pomelo-admin"</span>);
+</code></pre>
+				<p>Create a consoleService instance in master process.</p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> masterConsole = admin.createMasterConsole({
+    <span class="hljs-attr">port</span>: masterPort  
+});
+</code></pre>
+				<p>Register an admin module.</p>
+				<pre><code class="lang-javascript">masterConsole.register(moduleId, <span class="hljs-built_in">module</span>);
+</code></pre>
+				<p>Start masterConsole.</p>
+				<pre><code class="lang-javascript">masterConsole.start(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
+  <span class="hljs-comment">// start servers  </span>
+});
+</code></pre>
+				<p>Create a consoleService instance in monitor process. </p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> monitorConsole = admin.createMonitorConsole({
+    <span class="hljs-attr">id</span>: serverId,  
+    <span class="hljs-attr">type</span>: serverType,  
+    <span class="hljs-attr">host</span>: masterInfo.host,  
+    <span class="hljs-attr">port</span>: masterInfo.port,  
+    <span class="hljs-attr">info</span>: serverInfo  
+});
+</code></pre>
+				<p>##Customized modules  </p>
+				<p>Developers can customize modules to collect and export additional status as they need.</p>
+				<p>###Simple example  </p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> Module = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">app, opts</span>) </span>{
+  opts = opts || {};
+  <span class="hljs-keyword">this</span>.type = opts.type || <span class="hljs-string">'pull'</span>;  <span class="hljs-comment">// pull or push </span>
+  <span class="hljs-keyword">this</span>.interval = opts.interval || <span class="hljs-number">5</span>; <span class="hljs-comment">// pull or push interval</span>
+};
+
+Module.moduleId = <span class="hljs-string">'helloPomelo'</span>;
+
+<span class="hljs-built_in">module</span>.exports = Module;
+
+Module.prototype.monitorHandler = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">agent, msg</span>) </span>{
+  <span class="hljs-keyword">var</span> word = agent.id + <span class="hljs-string">' hello pomelo'</span>;
+  <span class="hljs-comment">// notify admin messages to master</span>
+  agent.notify(Module.moduleId, {<span class="hljs-attr">serverId</span>: agent.id, <span class="hljs-attr">body</span>: word});
+};
+
+Module.prototype.masterHandler = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">agent, msg</span>) </span>{
+  <span class="hljs-comment">// if no message, then notify all monitors to fetch datas</span>
+  <span class="hljs-keyword">if</span>(!msg) {
+    agent.notifyAll(Module.moduleId);
+    <span class="hljs-keyword">return</span>;
+  }
+  <span class="hljs-comment">// collect data from monitor</span>
+  <span class="hljs-keyword">var</span> data = agent.get(Module.moduleId);
+  <span class="hljs-keyword">if</span>(!data) {
+    data = {};
+    agent.set(Module.moduleId, data);
+  }
+
+  data[msg.serverId] = msg;
+};
+
+Module.prototype.clientHandler = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">agent, msg, cb</span>) </span>{
+  <span class="hljs-comment">// deal with client request,directly return data cached in master</span>
+  cb(<span class="hljs-literal">null</span>, agent.get(Module.moduleId) || {});
+};
+</code></pre>
+				<p>###Register customized modules</p>
+				<p>you must register your customized modules to pomelo to make it work.<br>write in app.js which is in your project&#39;s root directory  </p>
+				<pre><code class="lang-javascript">app.configure(<span class="hljs-string">'production|development'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  app.registerAdmin(<span class="hljs-string">'helloPomelo'</span>,<span class="hljs-keyword">new</span> helloPomelo());
+});
+</code></pre>
+				<p>##User level control<br>pomelo-admin defines user level for admin client to login master server in this schema  </p>
+				<pre><code class="lang-javascript">{
+    <span class="hljs-string">"id"</span>: <span class="hljs-string">"user-1"</span>,
+    <span class="hljs-string">"username"</span>: <span class="hljs-string">"admin"</span>,
+    <span class="hljs-string">"password"</span>: <span class="hljs-string">"admin"</span>,
+    <span class="hljs-string">"level"</span>: <span class="hljs-number">1</span>
+}
+</code></pre>
+				<p><strong>level</strong> defines the user admin level<br>level 1 means the user has the admin permission, this user can do anything<br>other level user will have limited permission<br>currently <strong>add</strong>, <strong>stop</strong>, <strong>kill</strong> will require level 1 permission  </p>
+				<p><strong>note</strong>: by default you should provide adminUser.json file under the <strong>config</strong> dir<br>adminUser.json</p>
+				<pre><code>[{
+    <span class="hljs-attr">"id"</span>: <span class="hljs-string">"user-1"</span>,
+    <span class="hljs-attr">"username"</span>: <span class="hljs-string">"admin"</span>,
+    <span class="hljs-attr">"password"</span>: <span class="hljs-string">"admin"</span>,
+    <span class="hljs-attr">"level"</span>: <span class="hljs-number">1</span>
+}, {
+    <span class="hljs-attr">"id"</span>: <span class="hljs-string">"user-2"</span>,
+    <span class="hljs-attr">"username"</span>: <span class="hljs-string">"monitor"</span>,
+    <span class="hljs-attr">"password"</span>: <span class="hljs-string">"monitor"</span>,
+    <span class="hljs-attr">"level"</span>: <span class="hljs-number">2</span>
+},{
+    <span class="hljs-attr">"id"</span>: <span class="hljs-string">"user-3"</span>,
+    <span class="hljs-attr">"username"</span>: <span class="hljs-string">"test"</span>,
+    <span class="hljs-attr">"password"</span>: <span class="hljs-string">"test"</span>,
+    <span class="hljs-attr">"level"</span>: <span class="hljs-number">2</span>
+}
+]
+</code></pre><p>##Self-defined auth 
+				pomelo-admin provides a simple auth function in <a href="https://github.com/NetEase/pomelo-admin/blob/master/lib/util/utils.js#L78">pomelo-admin auth</a><br>developers can provide self-defined auth in pomelo by<br>in master server</p>
+				<pre><code class="lang-javascript">app.set(<span class="hljs-string">'adminAuthUser'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">msg, cb</span>)</span>{
+  <span class="hljs-keyword">if</span>(auth success) {
+    cb(user);
+  } <span class="hljs-keyword">else</span> {
+    cb(<span class="hljs-literal">null</span>);
+  }
+})
+</code></pre>
+				<p>##Server master auth<br>server connect to master with authorization<br>pomelo-admin provides a simple auth function in <a href="https://github.com/NetEase/pomelo-admin/blob/master/lib/util/utils.js#L117">pomelo-admin auth</a><br>developers can provide self-defined auth in pomelo by<br>in master server</p>
+				<pre><code class="lang-javascript">app.set(<span class="hljs-string">'adminAuthServerMaster'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">msg, cb</span>)</span>{
+  <span class="hljs-keyword">if</span>(auth success) {
+    cb(<span class="hljs-string">'ok'</span>);
+  } <span class="hljs-keyword">else</span> {
+    cb(<span class="hljs-string">'bad'</span>);
+  }
+})
+</code></pre>
+				<p>in monitor server</p>
+				<pre><code class="lang-javascript">app.set(<span class="hljs-string">'adminAuthServerMonitor'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">msg, cb</span>)</span>{
+  <span class="hljs-keyword">if</span>(auth success) {
+    cb(<span class="hljs-string">'ok'</span>);
+  } <span class="hljs-keyword">else</span> {
+    cb(<span class="hljs-string">'bad'</span>);
+  }
+})
+</code></pre>
+				<p><strong>note</strong>: by default you should provide adminServer.json file under the <strong>config</strong> dir<br>adminServer.json</p>
+				<pre><code>[{
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"connector"</span>,
+    <span class="hljs-attr">"token"</span>: <span class="hljs-string">"agarxhqb98rpajloaxn34ga8xrunpagkjwlaw3ruxnpaagl29w4rxn"</span>
+}, {
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"chat"</span>,
+    <span class="hljs-attr">"token"</span>: <span class="hljs-string">"agarxhqb98rpajloaxn34ga8xrunpagkjwlaw3ruxnpaagl29w4rxn"</span>
+},{
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"gate"</span>,
+    <span class="hljs-attr">"token"</span>: <span class="hljs-string">"agarxhqb98rpajloaxn34ga8xrunpagkjwlaw3ruxnpaagl29w4rxn"</span>
+}
+]
+</code></pre><p><strong>type</strong> is the serverType, <strong>token</strong> is a string you can genrate by yourself<br>when using in pomelo, you should fill all your servers with type:token  </p>
+				<p>###Notes  </p>
+				<p><code>pomelo-admin</code> provides a series of useful system modules by default. But most of them are turned off by default. Add a simple line of code in <code>app.js</code> as below to enable them.</p>
+				<pre><code class="lang-javascript">app.configure(<span class="hljs-string">'development'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">// enable the system monitor modules</span>
+  app.enable(<span class="hljs-string">'systemMonitor'</span>);
+});
+</code></pre>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-enum tsd-is-not-exported">
+						<a href="enums/handletype.html" class="tsd-kind-icon">Handle<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/moduletype.html" class="tsd-kind-icon">Module<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/pro_code.html" class="tsd-kind-icon">PRO_<wbr>CODE</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/adminclient.html" class="tsd-kind-icon">Admin<wbr>Client</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/consoleservice.html" class="tsd-kind-icon">Console<wbr>Service</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/countdownlatch.html" class="tsd-kind-icon">Count<wbr>Down<wbr>Latch</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/masteragent.html" class="tsd-kind-icon">Master<wbr>Agent</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/mastersocket.html" class="tsd-kind-icon">Master<wbr>Socket</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/monitoragent.html" class="tsd-kind-icon">Monitor<wbr>Agent</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/monitorlogmodule.html" class="tsd-kind-icon">Monitor<wbr>Log<wbr>Module</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/mqttclient.html" class="tsd-kind-icon">Mqtt<wbr>Client</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/mqttserver.html" class="tsd-kind-icon">Mqtt<wbr>Server</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/nodeinfomodule.html" class="tsd-kind-icon">Node<wbr>Info<wbr>Module</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/profileproxy.html" class="tsd-kind-icon">Profile<wbr>Proxy</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/profilermodule.html" class="tsd-kind-icon">Profiler<wbr>Module</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/scriptsmodule.html" class="tsd-kind-icon">Scripts<wbr>Module</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/systeminfomodule.html" class="tsd-kind-icon">System<wbr>Info<wbr>Module</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/watchservermodule.html" class="tsd-kind-icon">Watch<wbr>Server<wbr>Module</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/adminclientoption.html" class="tsd-kind-icon">Admin<wbr>Client<wbr>Option</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/adminloginfo.html" class="tsd-kind-icon">Admin<wbr>Log<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/adminserverinfo.html" class="tsd-kind-icon">Admin<wbr>Server<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/adminuserinfo.html" class="tsd-kind-icon">Admin<wbr>User<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/agentclient.html" class="tsd-kind-icon">Agent<wbr>Client</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/authserverrequest.html" class="tsd-kind-icon">Auth<wbr>Server<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/authuserrequest.html" class="tsd-kind-icon">Auth<wbr>User<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/imodule.html" class="tsd-kind-icon">IModule</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/imodulefactory.html" class="tsd-kind-icon">IModule<wbr>Factory</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/masteragentoptions.html" class="tsd-kind-icon">Master<wbr>Agent<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/masterconsoleserviceopts.html" class="tsd-kind-icon">Master<wbr>Console<wbr>Service<wbr>Opts</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/modulerecord.html" class="tsd-kind-icon">Module<wbr>Record</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/monitoragentopts.html" class="tsd-kind-icon">Monitor<wbr>Agent<wbr>Opts</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/monitorconsoleserviceopts.html" class="tsd-kind-icon">Monitor<wbr>Console<wbr>Service<wbr>Opts</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/mqttclientopts.html" class="tsd-kind-icon">Mqtt<wbr>Client<wbr>Opts</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/mqttsocket.html" class="tsd-kind-icon">Mqtt<wbr>Socket</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/serverinfo.html" class="tsd-kind-icon">Server<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#application" class="tsd-kind-icon">Application</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#callback" class="tsd-kind-icon">Callback</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#consoleserviceopts" class="tsd-kind-icon">Console<wbr>Service<wbr>Opts</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#listener" class="tsd-kind-icon">Listener</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#mastercallback" class="tsd-kind-icon">Master<wbr>Callback</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#monitorcallback" class="tsd-kind-icon">Monitor<wbr>Callback</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#requestmsg" class="tsd-kind-icon">Request<wbr>Msg</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#whitelist" class="tsd-kind-icon">White<wbr>List</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#cpuprofiletype" class="tsd-kind-icon">CPUProfile<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#default_delay" class="tsd-kind-icon">DEFAULT_<wbr>DELAY</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#default_interval" class="tsd-kind-icon">DEFAULT_<wbr>INTERVAL</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#heapprofiletype" class="tsd-kind-icon">Heap<wbr>Profile<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#ms_of_second" class="tsd-kind-icon">MS_<wbr>OF_<wbr>SECOND</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#pro_fail" class="tsd-kind-icon">PRO_<wbr>FAIL</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#pro_ok" class="tsd-kind-icon">PRO_<wbr>OK</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#status_interval" class="tsd-kind-icon">STATUS_<wbr>INTERVAL</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#st_closed" class="tsd-kind-icon">ST_<wbr>CLOSED</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#st_connected" class="tsd-kind-icon">ST_<wbr>CONNECTED</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#st_inited" class="tsd-kind-icon">ST_<wbr>INITED</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#st_registered" class="tsd-kind-icon">ST_<wbr>REGISTERED</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#st_started" class="tsd-kind-icon">ST_<wbr>STARTED</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#type_client" class="tsd-kind-icon">TYPE_<wbr>CLIENT</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#type_monitor" class="tsd-kind-icon">TYPE_<wbr>MONITOR</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#curid" class="tsd-kind-icon">cur<wbr>Id</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#logger" class="tsd-kind-icon">logger</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#moduleerror" class="tsd-kind-icon">module<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#profiler" class="tsd-kind-icon">profiler</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#aclcontrol" class="tsd-kind-icon">acl<wbr>Control</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#addtoschedule" class="tsd-kind-icon">add<wbr>ToSchedule</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#checkfilepath" class="tsd-kind-icon">check<wbr>File<wbr>Path</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#checkjson" class="tsd-kind-icon">checkJSON</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#clone" class="tsd-kind-icon">clone</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#cloneerror" class="tsd-kind-icon">clone<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#compareserver" class="tsd-kind-icon">compare<wbr>Server</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#composecommand" class="tsd-kind-icon">compose<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#composerequest" class="tsd-kind-icon">compose<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#composeresponse" class="tsd-kind-icon">compose<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#createcountdownlatch" class="tsd-kind-icon">create<wbr>Count<wbr>Down<wbr>Latch</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#createmasterconsole" class="tsd-kind-icon">create<wbr>Master<wbr>Console</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#createmonitorconsole" class="tsd-kind-icon">create<wbr>Monitor<wbr>Console</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#defaultauthservermaster" class="tsd-kind-icon">default<wbr>Auth<wbr>Server<wbr>Master</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#defaultauthservermonitor" class="tsd-kind-icon">default<wbr>Auth<wbr>Server<wbr>Monitor</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#defaultauthuser" class="tsd-kind-icon">default<wbr>Auth<wbr>User</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#disableapp" class="tsd-kind-icon">disable<wbr>App</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#disablecommand" class="tsd-kind-icon">disable<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#doschedulejob" class="tsd-kind-icon">do<wbr>Schedule<wbr>Job</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#dumpcpu" class="tsd-kind-icon">dumpCPU</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#dumpmemory" class="tsd-kind-icon">dump<wbr>Memory</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#enableapp" class="tsd-kind-icon">enable<wbr>App</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#enablecommand" class="tsd-kind-icon">enable<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#exportevent" class="tsd-kind-icon">export<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#fetchlogs" class="tsd-kind-icon">fetch<wbr>Logs</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#format" class="tsd-kind-icon">format</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#get" class="tsd-kind-icon">get</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#getapp" class="tsd-kind-icon">get<wbr>App</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#getcomponentname" class="tsd-kind-icon">get<wbr>Component<wbr>Name</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#getlogfilename" class="tsd-kind-icon">get<wbr>Log<wbr>File<wbr>Name</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#handlercb" class="tsd-kind-icon">handler<wbr>Cb</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#invokecallback" class="tsd-kind-icon">invoke<wbr>Callback</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#isrequest" class="tsd-kind-icon">is<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#list" class="tsd-kind-icon">list</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#listcommand" class="tsd-kind-icon">list<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#md5" class="tsd-kind-icon">md5</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#parse" class="tsd-kind-icon">parse</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#proxycb" class="tsd-kind-icon">proxy<wbr>Cb</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#registerrecord" class="tsd-kind-icon">register<wbr>Record</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#run" class="tsd-kind-icon">run</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#runscript" class="tsd-kind-icon">run<wbr>Script</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#save" class="tsd-kind-icon">save</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#setapp" class="tsd-kind-icon">set<wbr>App</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#showcomponents" class="tsd-kind-icon">show<wbr>Components</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#showconfig" class="tsd-kind-icon">show<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#showconnections" class="tsd-kind-icon">show<wbr>Connections</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#showerror" class="tsd-kind-icon">show<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#showhandler" class="tsd-kind-icon">show<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#showlogins" class="tsd-kind-icon">show<wbr>Logins</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#showmodules" class="tsd-kind-icon">show<wbr>Modules</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#showproxy" class="tsd-kind-icon">show<wbr>Proxy</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#showservers" class="tsd-kind-icon">show<wbr>Servers</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#showsettings" class="tsd-kind-icon">show<wbr>Settings</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#showstatus" class="tsd-kind-icon">show<wbr>Status</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#size" class="tsd-kind-icon">size</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#default_param" class="tsd-kind-icon">DEFAULT_<wbr>PARAM</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer>
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

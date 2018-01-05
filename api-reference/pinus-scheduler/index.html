@@ -1,0 +1,403 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>pinus-scheduler</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">pinus-scheduler</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> pinus-scheduler</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<p><a href="https://travis-ci.org/node-pinus/pinus-scheduler"><img src="https://travis-ci.org/node-pinus/pinus-scheduler.svg?branch=master" alt="Build Status"></a></p>
+				<h1 id="pinus-scheduler">pinus-scheduler</h1>
+				<p>pinus-schedule is a schedule tool for nodejs, it&#39;s purpose is to provide a product level schedule module which is high efficient and can support large number job schedule.You can </p>
+				<p>As a schedule tool, it support two kinds of trigger: A simple trigger which use a js object and  a Cron time trigger which use a Cron time string.</p>
+				<p>##Installation</p>
+				<pre><code>npm <span class="hljs-keyword">install</span> pinus-schedule
+</code></pre><p>##Schedule simple Job
+				Simple job will receive a object as a trigger, which take three attributes, a JS function as object, and an object as the parameters in the job.</p>
+				<p>###Simple trigge example</p>
+				<pre><code class="lang-javascript"><span class="hljs-comment">//Fire 10000ms after now, and run 10 times with a 1000ms interval.</span>
+<span class="hljs-keyword">var</span> trigger1 = {
+  <span class="hljs-attr">start</span> : <span class="hljs-built_in">Date</span>.now() + <span class="hljs-number">10000</span>, <span class="hljs-comment">//Start time, use the time in date object</span>
+  period : <span class="hljs-number">1000</span>,      <span class="hljs-comment">//Fire interval, the precision is millisecond</span>
+  count : <span class="hljs-number">10</span>          <span class="hljs-comment">//Fire times, in this case the trigger will fire 10 times.   </span>
+}
+
+<span class="hljs-comment">//Fire right now, and run 10 times with 1000ms interval.</span>
+<span class="hljs-keyword">var</span> trigger2 = {
+  <span class="hljs-attr">period</span> : <span class="hljs-number">1000</span>,
+  <span class="hljs-attr">count</span> : <span class="hljs-number">10</span>
+}
+
+<span class="hljs-comment">//Fire right now, and run for ever with 1000ms interval.</span>
+<span class="hljs-keyword">var</span> trigger3 = {
+  <span class="hljs-attr">period</span> : <span class="hljs-number">1000</span>
+}
+
+<span class="hljs-comment">//Fire 3000ms after right now, run only once.</span>
+<span class="hljs-keyword">var</span> trigger4 = {
+  <span class="hljs-attr">start</span> : <span class="hljs-built_in">Date</span>.now() + <span class="hljs-number">3000</span>;
+}
+
+<span class="hljs-comment">//The job will fire right now, run only once.</span>
+<span class="hljs-keyword">var</span> trigger5 = {
+}
+
+<span class="hljs-comment">//Illegal! The 'count' attribute cannot used alone without 'period'.  </span>
+<span class="hljs-keyword">var</span> trigger6 = {
+  <span class="hljs-attr">count</span> : <span class="hljs-number">10</span>;
+}
+</code></pre>
+				<p>###Simple job example</p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> schedule = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../lib/schedule'</span>);
+
+<span class="hljs-keyword">var</span> simpleJob = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>{
+   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"run Job :"</span> + data.name);
+}
+
+schedule.scheduleJob({<span class="hljs-attr">start</span>:<span class="hljs-built_in">Date</span>.now(), <span class="hljs-attr">period</span>:<span class="hljs-number">3000</span>, <span class="hljs-attr">count</span>: <span class="hljs-number">10</span>}, simpleJob, {<span class="hljs-attr">name</span>: <span class="hljs-string">'simpleJobExample'</span>});
+</code></pre>
+				<p>##Schedule cron Job
+				Cron job is the job that use cron trigger, it is just like the simple job, only use the cron trigger instead of simple trigger.</p>
+				<p>###Cron job example</p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> schedule = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../lib/schedule'</span>);
+
+<span class="hljs-keyword">var</span> cronJob = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>{
+   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"run Job :"</span> + data.name);
+}
+
+schedule.scheduleJob(<span class="hljs-string">"0 0/15 8 * * *"</span>, cronJob, {<span class="hljs-attr">name</span>:<span class="hljs-string">'cronJobExample'</span>});
+</code></pre>
+				<p>###Cron Trigger syntax
+				Cron trigger has 7 fiels, the format is very like the cronTab in linux, only add a second field in the head. The fields and the boundary is as follow:</p>
+				<p><pre style="bgcolor='#dbdbdb'"></p>
+<ul>
+<li><ul>
+<li><ul>
+<li><ul>
+<li><ul>
+<li><ul>
+<li>command to be executed</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>|     |     |     |   |    |
+|     |     |     |   |    +----- day of week (0 - 6) (Sunday=0)
+|     |     |     |   +------- month (1 - 12)
+|     |     |     +--------- day of month (1 - 31)
+|     |     +----------- hour (0 - 23)
+|     +------------- min (0 - 59)
++------------- second (0 - 59)
+</pre></p>
+				<p>###Exampe of cron tirggers</p>
+				<p>&quot;0/2 0 8 <em> </em> 6&quot;    Fire at every Satuaday at every even seconds of 08:00
+				&quot;0 30 10 1 4 <em>&quot;      Fire at 10:30 on 1st of March<br>&quot;15 15 15 10 10 </em>&quot;   Fire at Octorber 10th, at 15:15:15.</p>
+				<p>###Special characters
+				Pinus-schedule allow three kinds of spechial characters, they are &#39;-&#39;, &#39;/&#39; and &#39;.&#39;.</p>
+				<p>-: &#39;-&#39; means range. For example, 1-3 in the second field means the seconds 1, 2 and 3</p>
+				<p>/: means increasement. For exapmle, 1/20 in the second field means 1, 21 and 41 second, and 1/2 means for every odd seconds as 1, 3, 5 ... ...</p>
+				<p>,: means additional values. For example, 1, 10, 15 in the second field means 1, 10 and 15 second. You can use &#39;-&#39;, and &#39;/&#39; with &#39;,&#39;, for example, 11,20-22,0/2 in the second filed means 11, 21 and all the even seconds. </p>
+				<p>##Cancel Job </p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> schedule = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../lib/schedule'</span>);
+
+<span class="hljs-keyword">var</span> simpleJob = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"run simple Job "</span>);
+}
+
+<span class="hljs-comment">//Add a simple job and save the id </span>
+<span class="hljs-keyword">var</span> id = schedule.scheduleJob({<span class="hljs-attr">period</span>: <span class="hljs-number">1000</span>}, simpleJob, {});
+
+<span class="hljs-comment">/**
+ * Do some thing else
+ */</span>
+
+<span class="hljs-comment">//CancelJob</span>
+schedule.cancelJob(id);
+</code></pre>
+				<p>When you cancel a job, it will stop schedule immidiatelly, and delete the job.</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/crontrigger.html" class="tsd-kind-icon">Cron<wbr>Trigger</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/job.html" class="tsd-kind-icon">Job</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/priorityqueue.html" class="tsd-kind-icon">Priority<wbr>Queue</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/simpletrigger.html" class="tsd-kind-icon">Simple<wbr>Trigger</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/simpletriggeropts.html" class="tsd-kind-icon">Simple<wbr>Trigger<wbr>Opts</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/timer.html" class="tsd-kind-icon">Timer</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#cron_job" class="tsd-kind-icon">CRON_<wbr>JOB</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#dom" class="tsd-kind-icon">DOM</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#dow" class="tsd-kind-icon">DOW</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#hour" class="tsd-kind-icon">HOUR</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#limit" class="tsd-kind-icon">Limit</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#min" class="tsd-kind-icon">MIN</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#month" class="tsd-kind-icon">MONTH</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#second" class="tsd-kind-icon">SECOND</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#simple_job" class="tsd-kind-icon">SIMPLE_<wbr>JOB</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#skip_old_job" class="tsd-kind-icon">SKIP_<wbr>OLD_<wbr>JOB</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#accuracy" class="tsd-kind-icon">accuracy</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#jobcount" class="tsd-kind-icon">job<wbr>Count</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#jobid" class="tsd-kind-icon">job<wbr>Id</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#latecount" class="tsd-kind-icon">late<wbr>Count</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#limit" class="tsd-kind-icon">limit</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#logger" class="tsd-kind-icon">logger</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#map" class="tsd-kind-icon">map</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#queue" class="tsd-kind-icon">queue</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#timer" class="tsd-kind-icon">timer</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#timercount" class="tsd-kind-icon">timer<wbr>Count</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#warnlimit" class="tsd-kind-icon">warn<wbr>Limit</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#canceljob" class="tsd-kind-icon">cancel<wbr>Job</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#checknum" class="tsd-kind-icon">check<wbr>Num</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#comparator" class="tsd-kind-icon">comparator</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#createjob" class="tsd-kind-icon">create<wbr>Job</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#createpriorityqueue" class="tsd-kind-icon">create<wbr>Priority<wbr>Queue</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#createtrigger" class="tsd-kind-icon">create<wbr>Trigger</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#decodecrontime" class="tsd-kind-icon">decode<wbr>Cron<wbr>Time</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#decodeperiodtime" class="tsd-kind-icon">decode<wbr>Period<wbr>Time</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#decoderangetime" class="tsd-kind-icon">decode<wbr>Range<wbr>Time</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#decodetimestr" class="tsd-kind-icon">decode<wbr>Time<wbr>Str</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#excutejob" class="tsd-kind-icon">excute<wbr>Job</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#getdomlimit" class="tsd-kind-icon">get<wbr>Dom<wbr>Limit</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#getnextjob" class="tsd-kind-icon">get<wbr>Next<wbr>Job</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#nexexcutetime" class="tsd-kind-icon">nex<wbr>Excute<wbr>Time</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#nextcrontime" class="tsd-kind-icon">next<wbr>Cron<wbr>Time</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#nexttime" class="tsd-kind-icon">next<wbr>Time</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#peeknextjob" class="tsd-kind-icon">peek<wbr>Next<wbr>Job</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter tsd-is-not-exported">
+						<a href="globals.html#schedulejob" class="tsd-kind-icon">schedule<wbr>Job</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#settimer" class="tsd-kind-icon">set<wbr>Timer</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#timematch" class="tsd-kind-icon">time<wbr>Match</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer>
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

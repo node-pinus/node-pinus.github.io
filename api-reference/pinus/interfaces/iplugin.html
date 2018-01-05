@@ -96,6 +96,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="iplugin.html#beforeshutdown" class="tsd-kind-icon">before<wbr>Shutdown</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="iplugin.html#beforestartup" class="tsd-kind-icon">before<wbr>Startup</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iplugin.html#components" class="tsd-kind-icon">components</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iplugin.html#cronpath" class="tsd-kind-icon">cron<wbr>Path</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iplugin.html#events" class="tsd-kind-icon">events</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iplugin.html#handlerpath" class="tsd-kind-icon">handler<wbr>Path</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iplugin.html#name" class="tsd-kind-icon">name</a></li>
@@ -114,7 +115,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="ilifecycle.html">ILifeCycle</a>.<a href="ilifecycle.html#afterstartall">afterStartAll</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/38a87ce/packages/pinus/lib/interfaces/ILifeCycle.ts#L11">interfaces/ILifeCycle.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/9863f07/packages/pinus/lib/interfaces/ILifeCycle.ts#L11">interfaces/ILifeCycle.ts:11</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -146,7 +147,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="ilifecycle.html">ILifeCycle</a>.<a href="ilifecycle.html#afterstartup">afterStartup</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/38a87ce/packages/pinus/lib/interfaces/ILifeCycle.ts#L10">interfaces/ILifeCycle.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/9863f07/packages/pinus/lib/interfaces/ILifeCycle.ts#L10">interfaces/ILifeCycle.ts:10</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -193,7 +194,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="ilifecycle.html">ILifeCycle</a>.<a href="ilifecycle.html#beforeshutdown">beforeShutdown</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/38a87ce/packages/pinus/lib/interfaces/ILifeCycle.ts#L13">interfaces/ILifeCycle.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/9863f07/packages/pinus/lib/interfaces/ILifeCycle.ts#L13">interfaces/ILifeCycle.ts:13</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -255,7 +256,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="ilifecycle.html">ILifeCycle</a>.<a href="ilifecycle.html#beforestartup">beforeStartup</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/38a87ce/packages/pinus/lib/interfaces/ILifeCycle.ts#L9">interfaces/ILifeCycle.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/9863f07/packages/pinus/lib/interfaces/ILifeCycle.ts#L9">interfaces/ILifeCycle.ts:9</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -301,7 +302,7 @@
 					<div class="tsd-signature tsd-kind-icon">components<span class="tsd-signature-symbol">:</span> <a href="componentcontructor.html" class="tsd-signature-type">ComponentContructor</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/38a87ce/packages/pinus/lib/interfaces/IPlugin.ts#L44">interfaces/IPlugin.ts:44</a></li>
+							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/9863f07/packages/pinus/lib/interfaces/IPlugin.ts#L44">interfaces/IPlugin.ts:44</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -311,12 +312,27 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="cronpath" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> cron<wbr>Path</h3>
+					<div class="tsd-signature tsd-kind-icon">cron<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/9863f07/packages/pinus/lib/interfaces/IPlugin.ts#L64">interfaces/IPlugin.ts:64</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>插件暴漏的crons所在的路径</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="events" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> events</h3>
 					<div class="tsd-signature tsd-kind-icon">events<span class="tsd-signature-symbol">:</span> <a href="applicationeventcontructor.html" class="tsd-signature-type">ApplicationEventContructor</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/38a87ce/packages/pinus/lib/interfaces/IPlugin.ts#L49">interfaces/IPlugin.ts:49</a></li>
+							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/9863f07/packages/pinus/lib/interfaces/IPlugin.ts#L49">interfaces/IPlugin.ts:49</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -331,7 +347,7 @@
 					<div class="tsd-signature tsd-kind-icon">handler<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/38a87ce/packages/pinus/lib/interfaces/IPlugin.ts#L54">interfaces/IPlugin.ts:54</a></li>
+							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/9863f07/packages/pinus/lib/interfaces/IPlugin.ts#L54">interfaces/IPlugin.ts:54</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -346,7 +362,7 @@
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/38a87ce/packages/pinus/lib/interfaces/IPlugin.ts#L39">interfaces/IPlugin.ts:39</a></li>
+							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/9863f07/packages/pinus/lib/interfaces/IPlugin.ts#L39">interfaces/IPlugin.ts:39</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -361,7 +377,7 @@
 					<div class="tsd-signature tsd-kind-icon">remoter<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/38a87ce/packages/pinus/lib/interfaces/IPlugin.ts#L59">interfaces/IPlugin.ts:59</a></li>
+							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/9863f07/packages/pinus/lib/interfaces/IPlugin.ts#L59">interfaces/IPlugin.ts:59</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -401,6 +417,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="iplugin.html#components" class="tsd-kind-icon">components</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="iplugin.html#cronpath" class="tsd-kind-icon">cron<wbr>Path</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="iplugin.html#events" class="tsd-kind-icon">events</a>

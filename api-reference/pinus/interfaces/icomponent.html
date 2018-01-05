@@ -102,6 +102,7 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="icomponent.html#afterstart" class="tsd-kind-icon">after<wbr>Start</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="icomponent.html#afterstartall" class="tsd-kind-icon">after<wbr>Start<wbr>All</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="icomponent.html#name" class="tsd-kind-icon">name</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="icomponent.html#start" class="tsd-kind-icon">start</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="icomponent.html#stop" class="tsd-kind-icon">stop</a></li>
@@ -118,7 +119,7 @@
 					<div class="tsd-signature tsd-kind-icon">after<wbr>Start<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/38a87ce/packages/pinus/lib/interfaces/IComponent.ts#L20">interfaces/IComponent.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/9863f07/packages/pinus/lib/interfaces/IComponent.ts#L20">interfaces/IComponent.ts:20</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -167,12 +168,46 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="afterstartall" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> after<wbr>Start<wbr>All</h3>
+					<div class="tsd-signature tsd-kind-icon">after<wbr>Start<wbr>All<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/9863f07/packages/pinus/lib/interfaces/IComponent.ts#L27">interfaces/IComponent.ts:27</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Component lifecycle callback</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>returns</dt>
+							<dd></dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="name" class="tsd-anchor"></a>
 					<h3>name</h3>
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/38a87ce/packages/pinus/lib/interfaces/IComponent.ts#L5">interfaces/IComponent.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/9863f07/packages/pinus/lib/interfaces/IComponent.ts#L5">interfaces/IComponent.ts:5</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -182,7 +217,7 @@
 					<div class="tsd-signature tsd-kind-icon">start<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/38a87ce/packages/pinus/lib/interfaces/IComponent.ts#L12">interfaces/IComponent.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/9863f07/packages/pinus/lib/interfaces/IComponent.ts#L12">interfaces/IComponent.ts:12</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -236,7 +271,7 @@
 					<div class="tsd-signature tsd-kind-icon">stop<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/38a87ce/packages/pinus/lib/interfaces/IComponent.ts#L29">interfaces/IComponent.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/node-pinus/pinus/blob/9863f07/packages/pinus/lib/interfaces/IComponent.ts#L36">interfaces/IComponent.ts:36</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -309,6 +344,9 @@
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="icomponent.html#afterstart" class="tsd-kind-icon">after<wbr>Start</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="icomponent.html#afterstartall" class="tsd-kind-icon">after<wbr>Start<wbr>All</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="icomponent.html#name" class="tsd-kind-icon">name</a>
