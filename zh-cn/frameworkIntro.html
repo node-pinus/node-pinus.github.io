@@ -49,12 +49,12 @@
 <ul>
 <li>io与可伸缩性的优势。io密集型的应用采用node.js是最合适的， 可达到最好的可伸缩性。</li>
 <li>多进程单线程的应用架构。node.js天生采用单线程， 使它在处理复杂逻辑的时候无需考虑线程同步、锁、死锁等一系列问题， 减少了很多逻辑错误。 由多进程node.js组成的服务器群是最理想的应用架构。</li>
-<li>语言优势。使用javascript开发可以实现快速迭代，如果客户端使用html 5，更可实现代码共用。</li>
+<li>语言优势。使用javascript开发可以实现快速迭代，如果客户端使用HTML5，更可实现代码共用。</li>
 </ul>
 <h2 id="游戏服务器的运行架构"><a class="markdown-anchor" href="#游戏服务器的运行架构">#</a> 游戏服务器的运行架构</h2>
 <p>一个真正高可扩展的游戏运行架构必须是多进程的。google的<a href="http://code.google.com/p/gritsgame/" target="_blank" rel="noopener">gritsgame</a>,  mozilla的<a href="https://github.com/mozilla/BrowserQuest" target="_blank" rel="noopener">browserquest</a> 都采用了node.js作为游戏服务器开发语言， 但它们都采用了单进程的node.js服务器，缺乏扩展性，这使它们可以支撑的在线用户数量是很有限的（这两个游戏主要是作为HTML5游戏的demo）。而多进程的架构可以很好的实现游戏服务器的的扩展性，达到支撑较多在线用户、降低服务器压力等要求。</p>
 <h3 id="一个典型的多进程mmo运行架构-如下图所示"><a class="markdown-anchor" href="#一个典型的多进程mmo运行架构-如下图所示">#</a> 一个典型的多进程MMO运行架构， 如下图所示：</h3>
-<p><img src="http://pomelo.netease.com/resource/documentImage/mmoArchitecture.png" alt="MMO运行架构"></p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1660530447301/HZG8e2Xdi.png" alt="MMO运行架构"></p>
 <p>说明： 上图中的方块表示进程， 定义上等同于“服务器“</p>
 <h4 id="运行架构说明"><a class="markdown-anchor" href="#运行架构说明">#</a> 运行架构说明：</h4>
 <ul>
@@ -77,7 +77,7 @@
 pinus正是这样一个框架，它使我们用最少的代码， 最清晰的结构来实现复杂的运行架构。</p>
 <h2 id="pinus的框架介绍"><a class="markdown-anchor" href="#pinus的框架介绍">#</a> pinus的框架介绍</h2>
 <p>pinus framework的组成架构如图所示：</p>
-<p><img src="http://pomelo.netease.com/resource/documentImage/pomelo-arch.png" alt="pinus框架"></p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1660528132891/eOSHlwwyg.png" alt="pinus框架"></p>
 <ul>
 <li>server management, pinus是个真正多进程、分布式的游戏服务器。因此各游戏server(进程)的管理是pinus很重要的部分，框架通过抽象使服务器的管理非常容易。</li>
 <li>network, 请求、响应、广播、RPC、session管理等构成了整个游戏框架的脉络，所有游戏流程都构建在这个脉络上。</li>
@@ -104,7 +104,7 @@ pinus正是这样一个框架，它使我们用最少的代码， 最清晰的�
 <h3 id="服务器进程的抽象与扩展介绍"><a class="markdown-anchor" href="#服务器进程的抽象与扩展介绍">#</a> 服务器（进程）的抽象与扩展介绍</h3>
 <h4 id="服务器的抽象与分类"><a class="markdown-anchor" href="#服务器的抽象与分类">#</a> 服务器的抽象与分类</h4>
 <p>该架构把游戏服务器做了抽象， 抽象成为两类：前端服务器和后端服务器， 如图：</p>
-<p><img src="http://pomelo.netease.com/resource/documentImage/serverAbstraction.png" alt="服务器抽象"></p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1660528130690/-pue5j7K2.png" alt="服务器抽象"></p>
 <p>前端服务器(frontend)的职责：</p>
 <ul>
 <li>负责承载客户端请求的连接</li>
@@ -124,7 +124,7 @@ pinus正是这样一个框架，它使我们用最少的代码， 最清晰的�
 <h4 id="服务器抽象的实现"><a class="markdown-anchor" href="#服务器抽象的实现">#</a> 服务器抽象的实现</h4>
 <p>利用目录结构与服务器对应的形式， 可以快速实现服务器的抽象。</p>
 <p>以下是示例图：
-<img src="http://pomelo.netease.com/resource/documentImage/directory.png" alt="目录结构"></p>
+<img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1660530466307/lPdpIhUKb.png" alt="目录结构"></p>
 <p>图中的connector, area, chat三个目录代表三类服务器类型， 每个目录下的handler与remote决定了这个服务器的行为（对外接口）。 开发者只要往handler与remote目录填代码， 就可以实现某一类的服务器。这让服务器实现起来非常方便。
 让服务器动起来， 只要填一份配置文件servers.json就可以让服务器快速动起来。
 配置文件内容如下所示：</p>
@@ -132,13 +132,13 @@ pinus正是这样一个框架，它使我们用最少的代码， 最清晰的�
 <h3 id="客户端请求与响应-广播的抽象介绍"><a class="markdown-anchor" href="#客户端请求与响应-广播的抽象介绍">#</a> 客户端请求与响应、广播的抽象介绍</h3>
 <p>所有的web应用框架都实现了请求与响应的抽象。尽管游戏应用是基于长连接的， 但请求与响应的抽象跟web应用很类似。
 下图的代码是一个request请求示例：</p>
-<p><img src="http://pomelo.netease.com/resource/documentImage/request.png" alt="请求示例"></p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1660528128116/M7_2QpqG-.png" alt="请求示例"></p>
 <p>请求的api与web应用的ajax请求很象，基于Convention over configuration的原则， 请求不需要任何配置。 如下图所示，请求的route字符串：chat.chatHandler.send， 它可以将请求分发到chat服务器上chatHandler文件定义的send方法。</p>
 <p>Pinus的框架里还实现了request的filter机制，广播/组播机制，详细介绍见<a href="https://github.com/node-pinus/pinus/wiki/Pinus-Framework" target="_blank" rel="noopener">pinus框架参考</a>。</p>
 <h3 id="服务器间rpc调用的抽象介绍"><a class="markdown-anchor" href="#服务器间rpc调用的抽象介绍">#</a> 服务器间RPC调用的抽象介绍</h3>
 <p>架构中各服务器之间的通讯主要是通过底层RPC框架来完成的，该RPC框架主要解决了进程间消息的路由和RPC底层通讯协议的选择两个问题。
 服务器间的RPC调用也实现了零配置。实例如下图所示：</p>
-<p><img src="http://pomelo.netease.com/resource/documentImage/rpcInterface.png" alt="rpc调用"></p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1660528124991/QoHoJFTEC.png" alt="rpc调用"></p>
 <p>上图的remote目录里定义了一个RPC接口： chatRemote.js，它的接口定义如下：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chatRemote.kick = function(uid, player, cb) &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>其它服务器（RPC客户端）只要通过以下接口就可以实现RPC调用：</p>
@@ -149,7 +149,7 @@ RPC框架目前在底层采用socket.io作为通讯协议，但协议对上层�
 <p>component是pinus自定义组件，开发者可自加载自定义的component。
 component在<a href="https://github.com/node-pinus/pinus/wiki/Pinus-Framework" target="_blank" rel="noopener">pinus框架参考</a>将有更深入的讨论。
 以下是component的生命周期图：</p>
-<p><img src="http://pomelo.netease.com/resource/documentImage/components.png" alt="components"></p>
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1660528088852/be3kXe34s.png" alt="components"></p>
 <p>用户只要实现component相关的接口： start, afterStart, stop, 就可以加载自定义的组件：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">app.load([name], comp, [opts])</span><br></pre></td></tr></table></figure>
 <h2 id="总结"><a class="markdown-anchor" href="#总结">#</a> 总结</h2>
